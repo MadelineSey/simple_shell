@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	/* Implenting an infinite loop */
 	for (;;)
 	{
-	printf("%s", read_status);
+	printf("%s", prompt);
 	read_status = getline(&lineptr, &n, stdin);
 
 	/* Verify if the getline fxn failed, hit EOF, or the user pressed CTRL + D.*/
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 		return (-1);
 	}
 
-	printf("Read status: %zd\n", read_status);
+	printf("Read Status: %zd\n", read_status);
 	printf("Input Line: %s\n", lineptr);
 
 	/* Release allocated memory */
