@@ -9,5 +9,7 @@
 #include <sys/stat.h>
 
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+void execmd(char **argv);
+char *get_location(char *command);
 
 #endif
