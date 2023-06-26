@@ -4,7 +4,7 @@
  * get_location - a fxn to find the command's location in the system's path
  *
  * @command: The command for retrieving the location
- * @return: The full file path, if available, otherwise return NULL
+ * Return: The complete file path, if available, otherwise NULL.
  */
 
 char *get_location(char *command)
