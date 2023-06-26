@@ -15,9 +15,8 @@ int main(int argc, char **argv)
 	char *lineptr = NULL, *lineptr_copy = NULL;
 	size_t n = 0;
 	ssize_t read_status;
-	const char *delim = " \n"
-	int num_tokens = 0;
-	char *token = strok(lineptr, delim);
+	const char *delim = " \n";
+	char *token = strtok(lineptr, delim);
 	int num_tokens = 0;
 	int i;
 
@@ -42,7 +41,7 @@ int main(int argc, char **argv)
 	lineptr_copy = malloc(sizeof(char) * read_status);
 	if (lineptr_copy == NULL)
 	{
-		perror("tsh: memory allocation error")
+		perror("tsh: memory allocation error");
 		return (-1);
 	}
 	/*copy from lineptr to lineptr_copy */
