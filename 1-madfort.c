@@ -1,4 +1,6 @@
-#include "madfortshell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "shell.h"
 
 /**
   *total_value - finds the total value of two numbers
@@ -8,5 +10,5 @@
   */
 int total_value(int x, int y)
 {
-	return(x + y);
+	return (x + y);
 }

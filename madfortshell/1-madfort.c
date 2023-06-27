@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include "shell.h"
 
 /**
   *total_value - finds the total value of two numbers
