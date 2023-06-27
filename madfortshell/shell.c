@@ -16,9 +16,13 @@
   */
 int main(int argc, char *argv[], char **env)
 {
-	char *buffer = NULL, *prompt = "madfort$";
+	char *buffer = NULL, *prompt = "madfort$", *error_mesg = "none";
 	size_t buffer_size = 0;
 	ssize_t input_len;
+	pid_t cpid;
+	const char *delim = " \n";
+	int num_tokens = 0;
+	char *token;
 
 	while (1)
 	{
@@ -34,7 +38,31 @@ int main(int argc, char *argv[], char **env)
 		}
 		if (buffer[input_len - 1] == '\n')
 			buffer[input_len - 1] = '\0';
-		/* to remove any newline*/
+
+		if (token == NULL){
+			continue;
+		}
+
+		/* argument for execve*/
+
+		args[0] = token;
+		args[1] = NULL;
+
+		cpid = fork();
+		if (cpid == -1)
+		{
+			perror("Error (fork)");
+			exit(EXIT_FAILURE);
+		}
+		if (cpid == 0)
+			_execute(buffer, &statbuff, env);
+/* Parent process should wait*/
+		if (waitpid(cpid,&wstat, 0) == -1)
+		{
+			perror("Error (wait)");
+			exit(EXIT_FAILURE);
+		}
+	}
 		free(buffer);
 		return (0);
 	}
